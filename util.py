@@ -1,4 +1,4 @@
-#######################################
+############ruuuuuuuuuuuuuuuuu###########################
 #                                     #
 # You shouldn't need to edit this yet #
 #                                     #
@@ -7,10 +7,8 @@
 
 import curses
 from board import Stone
-import atexit
 import sys
 
-sys.stderr = open("error.log", "w")
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
@@ -28,8 +26,9 @@ class Display:
     screen : curses screen object
     window : sub-window in which the game is displayed
     """
-    def __init__(self):
-        self.screen = curses.initscr()
+    def __init__(self, screen):
+        self.screen = screen
+        screen.clear()
         curses.curs_set(0)
         curses.noecho()
         self.window = curses.newwin(WIN_H,
@@ -40,7 +39,6 @@ class Display:
         self._message = ''
         self._cursor_char = '.' 
         self._cursor_location = None
-        atexit.register(self._end_screen)
 
     def print_board(self, piece_at):
         self.window.clear()
@@ -100,8 +98,3 @@ class Display:
         """
         self.window.refresh()
         self.screen.refresh()
-
-    def _end_screen(self):
-        curses.endwin()
-
-

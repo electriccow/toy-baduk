@@ -1,11 +1,13 @@
+from curses import wrapper
 from util import Display, eprint
 from time import sleep
 from board import Board
+import sys
 
 
-def main():
+def main(screen):
     # Create the display object. This is found in util.py
-    display = Display()
+    display = Display(screen)
     board = Board()
     message = 'Hello'
     key_template = "The last key pressed was: \n {} {}"
@@ -35,5 +37,6 @@ def main():
         ######################################################
     
 if __name__ == "__main__":
-    main()
+    wrapper(main)
+    
     
