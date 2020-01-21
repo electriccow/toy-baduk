@@ -1,19 +1,19 @@
 from util import Display, eprint
 from time import sleep
-from board import Stone
+from board import Board
 
 
 def main():
     # Create the display object. This is found in util.py
-    display = util.Display()
-
+    display = Display()
+    board = Board()
     message = 'Hello'
     key_template = "The last key pressed was: \n {} {}"
 
 
     while True:
         # See util.py for where these methods are defined
-        display.print_board(get_stone_at)
+        display.print_board(board.get_stone_at)
         display.display_message(message)
         display.refresh()
 
