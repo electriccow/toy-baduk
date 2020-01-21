@@ -3,8 +3,6 @@
 # You shouldn't need to edit this yet #
 #                                     #
 #######################################
-
-
 import curses
 from board import Stone
 import sys
