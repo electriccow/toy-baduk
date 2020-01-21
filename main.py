@@ -5,6 +5,8 @@ from board import Board
 
 def main():
     # Create the display object. This is found in util.py
+    x=3
+    y=3
     display = Display()
     board = Board()
     message = 'Hello'
@@ -25,7 +27,18 @@ def main():
         # https://docs.python.org/3/library/curses.html#constants
 
         input_char = display.get_input()
-        display.set_cursor((3,3))
+        display.set_cursor((x,y))
+
+        if input_char == 67:
+            x=x+1
+        elif input_char == 66:
+            y=y+1
+        elif input_char == 65:
+            y=y-1
+        elif input_char == 68:
+            x=x-1
+
+        display.set_cursor((x,y))
 
         # These may help you figure out what is going on
         eprint("This appears in the error log.", input_char)
